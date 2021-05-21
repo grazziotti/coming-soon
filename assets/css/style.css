@@ -112,3 +112,46 @@ form button {
 form button:hover {
     background-color: #5d43b5;
 }
+
+.error {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 70px;
+    margin-top: -70px;
+}
+.errorMessageArea {
+    display: flex;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 35px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    transition: 0.3s;
+    background-color: white;
+    cursor: text;
+}
+.errorMessageArea .errorMessage {
+    color: transparent;
+    margin-right: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.errorMessageArea .errorIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #f00;
+}
+.inputArea:hover .errorMessageArea {
+    border-color: #f00;
+}
+.inputArea:hover .errorMessageArea .errorMessage {
+    color: #f00;
+}
