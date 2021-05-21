@@ -41,3 +41,43 @@ const updateCountdown = () => {
 updateCountdown()
 
 setInterval(updateCountdown, 1000)
+
+
+
+// Form validation
+const form = document.querySelector('form')
+const inputArea = form.querySelector('.inputArea')
+const formInput = form.querySelector('.inputArea input')
+
+inputArea.addEventListener('click', () => {
+    clearError()
+    formInput.focus()
+})
+
+form.addEventListener('submit', e => {
+    e.preventDefault()
+    checkInput()
+})
+
+const checkInput = () => {
+    clearError()
+    if ( isEmail() ) form.submit()
+    else showError()
+}
+
+const isEmail = () => {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return regex.test(formInput.value.trim().toLowerCase())
+}
+
+const showError = () => {
+    const errorElement = document.createElement('div')
+    errorElement.classList.add('error')
+    errorElement.innerHTML = '<div class="errorMessageArea"><span class="errorMessage">Valid email is required</span><div class="errorIcon">!</div></div>'
+    
+    formInput.parentElement.insertBefore(errorElement, errorElement.nextElementSibling)
+}
+
+const clearError = () => {
+    if (form.querySelector('.error') !== null) form.querySelector('.error').remove()
+}
